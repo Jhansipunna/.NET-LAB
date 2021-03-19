@@ -1,25 +1,38 @@
 ﻿using System;
-namespace ExceptionEx
+using System.Collections.Generic;
+
+namespace GenericDictionary
 {
-    class program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            try
+
+            Dictionary<string, string> movie = new Dictionary<string, string>();
+
+
+            movie.Add("sci-fi", "Star Wars");
+            movie.Add("Action", "The One");
+            movie.Add("Fantacy", "Star Dust");
+            movie.Add("Computer", "Algorithm");
+            movie.Add("Love", "50 First Dates");
+
+            Console.WriteLine(movie["sci-fi"]);
+
+            foreach (KeyValuePair<string, string> items in movie)
             {
-                Console.WriteLine("Enter a number:");
-                var num = int.Parse(Console.ReadLine());
-                Console.WriteLine($"square of(num)is {num * num}");
+                Console.WriteLine(items.ToString());
             }
-            catch (Exception ex)
+
+
+            if (movie.ContainsKey("sci-fi"))
             {
-                Console.WriteLine("Error info:"+ex.Message);
+                Console.WriteLine("Key found. Value is " + movie["sci-fi"]);
             }
-            finally
+            else
             {
-                Console.WriteLine("re-try with adifferent number");
+                Console.WriteLine("Key Not Found");
             }
         }
-        
     }
 }
